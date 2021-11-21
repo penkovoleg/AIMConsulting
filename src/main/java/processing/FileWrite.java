@@ -11,8 +11,8 @@ public class FileWrite {
     private final String outputDirectory;
     private final Map<String, ConcurrentSkipListSet<String>> contentForHeading;
 
-    public FileWrite(final String outputFile, final Map<String, ConcurrentSkipListSet<String>> contentForHeading) {
-        this.outputDirectory = outputFile;
+    public FileWrite(final String outputDirectory, final Map<String, ConcurrentSkipListSet<String>> contentForHeading) {
+        this.outputDirectory = outputDirectory;
         this.contentForHeading = contentForHeading;
     }
 
