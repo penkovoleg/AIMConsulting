@@ -9,17 +9,17 @@ import java.util.concurrent.ConcurrentSkipListSet;
 public class FileWrite {
 
     private final String outputDirectory;
-    private final Map<String, ConcurrentSkipListSet<String>> contentForHeading;
+    private final Map<String, ConcurrentSkipListSet<String>> valuesForKey;
 
     public FileWrite(final String outputDirectory,
-                     final Map<String, ConcurrentSkipListSet<String>> contentForHeading) {
+                     final Map<String, ConcurrentSkipListSet<String>> valuesForKey) {
         this.outputDirectory = outputDirectory;
-        this.contentForHeading = contentForHeading;
+        this.valuesForKey = valuesForKey;
     }
 
     public void runWriteAndPrint() {
         System.out.println("\nResult:");
-        for (Map.Entry<String, ConcurrentSkipListSet<String>> entry : contentForHeading.entrySet()) {
+        for (Map.Entry<String, ConcurrentSkipListSet<String>> entry : valuesForKey.entrySet()) {
             try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(outputDirectory
                                                                                    + "/"
                                                                                    + entry.getKey(), false))) {
