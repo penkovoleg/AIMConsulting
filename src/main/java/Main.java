@@ -34,11 +34,13 @@ public class Main {
     }
 
     private static void runRead(final File[] inputFiles) {
-        CountDownLatch doneSignal = new CountDownLatch(NUMBER_THREAD);
+        CountDownLatch doneSignal = new CountDownLatch(inputFiles.length);
         ExecutorService executorService = Executors.newFixedThreadPool(NUMBER_THREAD);
         for (File inputFile : inputFiles) {
             executorService.execute(new FileRead(inputFile, valuesForKey, doneSignal));
+
         }
+        executorService.shutdown();
         try {
             doneSignal.await();
         } catch (InterruptedException e) {
